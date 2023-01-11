@@ -1,9 +1,11 @@
 import React from "react";
-const About = () => {
+import { Navbar } from "../../components";
+const AboutUs = () => {
   return (
     <div>
-      <h1>About Page</h1>
+        <Navbar />
+      <h1>About Us Page</h1>
     </div>
   );
 };
-export default About;
+export default AboutUs;
