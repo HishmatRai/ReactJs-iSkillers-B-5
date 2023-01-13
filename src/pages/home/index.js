@@ -1,52 +1,73 @@
 import React, { useState } from "react";
-import { Button, Navbar } from "../../components";
+import { Button, Card } from "../../components";
 const Home = () => {
-  let [fullName, setFullName] = useState("");
-  let [message, setMessage] = useState("");
-  let [messageType, setMessageType] = useState("");
-  const SignUp = () => {
-    if (fullName === "") {
-      setMessage("full name required");
-      setMessageType("error");
-    } else {
-      setMessage("full name", fullName);
-      setMessageType("success");
-    }
+  let [classType, setClassType] = useState("");
+  const SubmitData = () => {
+    console.log(classType);
   };
+
+  let CardData = [
+    {
+      heading: "Heading",
+    },
+    {
+      heading: "Heading",
+    },
+    {
+      heading: "Heading",
+    },
+    {
+      heading: "Heading",
+    },
+    {
+      heading: "Heading",
+    },
+    {
+      heading: "Heading",
+    },
+  ];
   return (
     <div>
-      <Navbar />
+      <Button title="Sign Up" onClick={() => alert("sing up")} />
+
+      {/* {CardData.map((v, i) => {
+        return <Card heading={`${v.heading} ${i+1}`} key={i} />;
+      })} */}
+      {CardData.map((v, i) => {
+        return (
+          <Card key={i}>
+            <div>
+              <h1>{v.heading}</h1>
+              <p>fsdfsf</p>
+              <button>fsdf</button>
+              <ul>
+                <li>fsdfsf</li>
+              </ul>
+            </div>
+          </Card>
+        );
+      })}
+
       <h1>Home Page</h1>
-      <input
-        type="text"
-        placeholder="full name"
-        value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
-      />
-      <p style={{ color: messageType === "error" ? "red" : "green" }}>
-        {message}
-      </p>
-      <Button
-        title="Sign Up"
-        color="red"
-        buttonType={1}
-        width="10%"
-        onClick={SignUp}
-      />
-      <Button
-        title="Login"
-        color="green"
-        buttonType={2}
-        width="80%"
-        onClick={() => alert("log in")}
-      />
-      <Button
-        title="Update"
-        color="blue"
-        buttonType={1}
-        width="100%"
-        onClick={() => alert("Update")}
-      />
+      <button
+        onClick={() => setClassType("Physical")}
+        style={{ backgroundColor: classType === "Physical" ? "green" : "gray" }}
+      >
+        Physical
+      </button>
+      <button
+        onClick={() => setClassType("Online")}
+        style={{ backgroundColor: classType === "Online" ? "green" : "gray" }}
+      >
+        Online
+      </button>
+      {classType !== "" && <p>Apply form here for {classType} classes.</p>}
+
+      <div>
+        {classType === "Physical" && <h1>Physical</h1>}
+        {classType === "Online" && <h1>Online</h1>}
+      </div>
+      <button onClick={SubmitData}>click </button>
     </div>
   );
 };
