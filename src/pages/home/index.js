@@ -1,73 +1,44 @@
 import React, { useState } from "react";
-import { Button, Card } from "../../components";
+import { Button, Card } from "./../../components";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
-  let [classType, setClassType] = useState("");
-  const SubmitData = () => {
-    console.log(classType);
+  const navigate = useNavigate();
+  let [heading, setHeading] = useState("Home Page");
+  let [list, setList] = useState([]);
+  // push data
+  var newList = [];
+  const pushHandler = () => {
+    let userData = {
+      name: "testing 1",
+      email: "testing@gmail.com",
+      uid: "546erw5rewr52er",
+    };
+    newList.push(userData);
+    setList([...list, ...newList]);
+    // setList([...list]);
   };
-
-  let CardData = [
-    {
-      heading: "Heading",
-    },
-    {
-      heading: "Heading",
-    },
-    {
-      heading: "Heading",
-    },
-    {
-      heading: "Heading",
-    },
-    {
-      heading: "Heading",
-    },
-    {
-      heading: "Heading",
-    },
-  ];
+  console.log("list >>>>>>>>>>> ,", list);
+  console.log("list >>>>>>>>>>> ,", list.length);
   return (
     <div>
-      <Button title="Sign Up" onClick={() => alert("sing up")} />
-
-      {/* {CardData.map((v, i) => {
-        return <Card heading={`${v.heading} ${i+1}`} key={i} />;
-      })} */}
-      {CardData.map((v, i) => {
+      <h1>{heading === "" ? "Home Page" : heading}</h1>
+      <input
+        type="text"
+        value={heading}
+        onChange={(e) => setHeading(e.target.value)}
+      />
+      <Button title="About" onClick={() => navigate("/about-us")} />
+      <Button title="Update" onClick={() => setHeading("123")} />
+      <Button title="Push" onClick={pushHandler} />
+      {list.map((v, i) => {
         return (
-          <Card key={i}>
-            <div>
-              <h1>{v.heading}</h1>
-              <p>fsdfsf</p>
-              <button>fsdf</button>
-              <ul>
-                <li>fsdfsf</li>
-              </ul>
-            </div>
-          </Card>
+          <div key={i} style={{ border: "2px solid red", marginTop: "10px" }}>
+            <h1>{v.name}</h1>
+            <p>{v.email}</p>
+            <p>{v.uid}</p>
+          </div>
         );
       })}
-
-      <h1>Home Page</h1>
-      <button
-        onClick={() => setClassType("Physical")}
-        style={{ backgroundColor: classType === "Physical" ? "green" : "gray" }}
-      >
-        Physical
-      </button>
-      <button
-        onClick={() => setClassType("Online")}
-        style={{ backgroundColor: classType === "Online" ? "green" : "gray" }}
-      >
-        Online
-      </button>
-      {classType !== "" && <p>Apply form here for {classType} classes.</p>}
-
-      <div>
-        {classType === "Physical" && <h1>Physical</h1>}
-        {classType === "Online" && <h1>Online</h1>}
-      </div>
-      <button onClick={SubmitData}>click </button>
     </div>
   );
 };
