@@ -1,10 +1,12 @@
 import React from "react";
 import RouterNavigation from "./config/router";
+import { Provider } from "react-redux";
+import { Store } from "./redux/store";
 const App = () => {
   return (
-    <div>
+    <Provider store={Store}>
       <RouterNavigation />
-    </div>
+    </Provider>
   );
 };
 export default App;
