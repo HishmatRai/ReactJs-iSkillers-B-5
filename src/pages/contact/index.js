@@ -12,12 +12,12 @@ const Contact = () => {
       <h1 style={{color:isDark? "white":"black"}}>
         Contact Page {themeColor} {fullName}
       </h1>
-      <p>{emailAddress}</p>
-      <input
+      {/* <p>{emailAddress}</p> */}
+      {/* <input
         type={"email"}
         value={emailAddress}
         onChange={(e) => dispatch(setEmailAddress(e.target.value))}
-      />
+      /> */}
       <Navbar />
     </div>
   );

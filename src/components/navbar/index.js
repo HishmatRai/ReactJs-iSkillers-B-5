@@ -9,12 +9,12 @@ const Navbar = () => {
       <h1 style={{color:isDark? "white":"black"}}>
         nav bar {themeColor} {fullName}
       </h1>
-      <input
+      {/* <input
         type={"text"}
         value={fullName}
         onChange={(e) => dispatch(setFullName(e.target.value))}
-      />
-      <p>{emailAddress}</p>
+      /> */}
+      {/* <p>{emailAddress}</p> */}
     </div>
   );
 };

@@ -1,9 +1,18 @@
-import { THEME_COLOR, FULL_NAME, EMAIL, IS_DARK } from "./action";
+import {
+  THEME_COLOR,
+  FULL_NAME,
+  EMAIL,
+  IS_DARK,
+  TODO_LIST,
+  TODO_VALUE,
+} from "./action";
 const INITIAL_STATE = {
   themeColor: "blue",
   fullName: "iSkillers",
   emailAddress: "",
-  isDark: true,
+  isDark: false,
+  todoList: [],
+  todoValue: "",
 };
 function useReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -15,6 +24,10 @@ function useReducer(state = INITIAL_STATE, action) {
       return { ...state, emailAddress: action.payload };
     case IS_DARK:
       return { ...state, isDark: action.payload };
+    case TODO_LIST:
+      return { ...state, todoList: action.payload };
+    case TODO_VALUE:
+      return { ...state, todoValue: action.payload };
     default:
       return state;
   }
